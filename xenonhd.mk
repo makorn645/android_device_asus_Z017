@@ -14,10 +14,17 @@
 
 $(call inherit-product, device/asus/Z017/full_Z017.mk)
 
-## Device identifier. This must come after all inclusions
+# Inherit common product files.
+$(call inherit-product, vendor/xenonhd/config/common_full_phone.mk)
+
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := Z017
-PRODUCT_NAME := lineage_Z017
+PRODUCT_NAME := xenonhd_Z017
 PRODUCT_BRAND := asus
 PRODUCT_MANUFACTURER := asus
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.name
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.xenonhd.maintainer="Makornthawat Emery (makorn645)" \
+    ro.xenonhd.donate="https://www.paypal.me/makorn645"
