@@ -26,5 +26,5 @@ PRODUCT_MANUFACTURER := asus
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.name
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.xenonhd.maintainer="Makornthawat Emery (makorn645)" \
+    ro.xenonhd.maintainer=makorn645 \
     ro.xenonhd.donate="https://www.paypal.me/makorn645"
