@@ -199,6 +199,10 @@ PRODUCT_PACKAGES += \
     android.hardware.configstore-utils \
     android.hardware.configstore@1.0
 
+# Doze mode
+PRODUCT_PACKAGES += \
+    AsusDoze
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
