@@ -26,9 +26,6 @@ vendor/etc/acdbdata/QRD/QRD_workspaceFile.qwsp
 
 # Camera
 vendor/bin/mm-qcamera-daemon
-vendor/lib/hw/camera.msm8953.so
-vendor/lib/libmmjpeg_interface.so
-vendor/lib/libqomx_core.so
 vendor/lib/libmm-omxcore.so
 vendor/lib/libmm-qdcm.so
 vendor/lib64/libmm-qdcm.so
@@ -84,7 +81,6 @@ vendor/lib/libmmcamera_imx298.so
 vendor/lib/libmmcamera_imx318.so
 vendor/lib/libmmcamera_imx362.so
 vendor/lib/libmmcamera_imx378.so
-vendor/lib/libmmcamera_interface.so
 vendor/lib/libmmcamera2_pp_buf_mgr.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_le2464c_eeprom.so
@@ -1107,7 +1103,6 @@ vendor/bin/hvdcp_opti
 vendor/bin/install_key_server
 vendor/bin/lightsensor_calibration_start
 vendor/bin/mm-audio-ftm
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-vidc-omx-test
 vendor/bin/mmi_debug
 vendor/bin/modem_country
