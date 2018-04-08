@@ -422,6 +422,10 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     sp
 
+# Recovery
+PRODUCT_PACKAGES += \
+    librecovery_updater_msm8953
+
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
