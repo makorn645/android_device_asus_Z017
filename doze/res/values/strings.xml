@@ -15,7 +15,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Ambient Display -->
-    <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_display_title">Advanced ambient display</string>
     <string name="ambient_display_summary">Wake screen when you receive notifications</string>
 
     <!-- Device specific settings -->
