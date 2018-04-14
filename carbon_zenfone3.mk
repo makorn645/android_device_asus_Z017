@@ -13,19 +13,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/asus/zenfone3/full_zenfone3.mk)
+# Inherit Carbon configs.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, vendor/carbon/config/common.mk)
+$(call inherit-product, vendor/carbon/config/gsm.mk)
 
-# Inherit common product files.
-$(call inherit-product, vendor/xenonhd/config/common_full_phone.mk)
+# Include telephony stuff
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
+# Inherit from zenfone3 device
+$(call inherit-product, device/asus/zenfone3/device.mk)
+$(call inherit-product-if-exists, vendor/asus/zenfone3/zenfone3-vendor.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := zenfone3
-PRODUCT_NAME := xenonhd_zenfone3
+PRODUCT_NAME := carbon_zenfone3
 PRODUCT_BRAND := asus
 PRODUCT_MANUFACTURER := asus
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.name
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.xenonhd.maintainer=makorn645 \
-    ro.xenonhd.donate="https://www.paypal.me/makorn645"
