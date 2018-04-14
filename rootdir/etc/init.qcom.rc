@@ -25,23 +25,35 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+#import /vendor/etc/init/hw/init.qcom.usb.rc
+#import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.asus.usb.rc
 import /vendor/etc/init/hw/init.target.rc
+#+++ ASUS_BSP : Add ASUS user/eng rc
 import init.asus.rc
+# --- ASUS_BSP : Add ASUS user/eng rc
 import /vendor/etc/init/hw/init.qcom.factory.rc
-import init.asus.thermald.rc
 
+#ASUS_BSP +++ ShowCai "[Thermal] Thermal Service"
+import init.asus.thermald.rc
+#ASUS_BSP --- ShowCai "[Thermal] Thermal Service"
+
+#ASUS_BSP Wei +++
+import init.asus.debugtool.rc
+#ASUS_BSP Wei +++
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
-
+#ASUS_BSP Johnny +++ "add tcpdump tool"
+# tcpdump_warp service to save tcpdump to /sdcard
 service tcpdump-warp /system/vendor/bin/sh /system/vendor/xbin/netlog.sh
     class late_start
     user root
     group root
     disabled
+#ASUS_BSP Johnny --- "add tcpdump tool"
 
 on init
     # Set permissions for persist partition
