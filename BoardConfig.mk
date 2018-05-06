@@ -31,14 +31,19 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000
 
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := ze520kl-userdebug_defconfig
-TARGET_KERNEL_SOURCE := kernel/asus/Z017
+TARGET_KERNEL_CONFIG := milkshake_zenfone3_defconfig
+TARGET_KERNEL_SOURCE := kernel/asus/msm8953
 
 TARGET_LDPRELOAD := libNimsWrap.so
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
 TARGET_HW_DISK_ENCRYPTION := true
+
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_zenfone3
+TARGET_RECOVERY_DEVICE_MODULES := libinit_zenfone3
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
 # Recovery
 RECOVERY_VARIANT := twrp
@@ -72,6 +77,7 @@ TW_BRIGHTNESS_PATH := "/sys/devices/soc/1a00000.qcom\x2mdss_mdp/1a00000.qcom\x2m
 TW_MAX_BRIGHTNESS := 255
 
 TARGET_RECOVERY_DEVICE_MODULES := \
+    libinit_zenfone3 \
     libbinder \
     libgui \
     libui \
@@ -84,4 +90,3 @@ TW_RECOVERY_ADDITIONAL_RELINK_FILES := \
     $(OUT)/system/bin/qseecomd
 
 TARGET_UNIFIED_DEVICE := true
-TARGET_SYSTEM_PROP := device/asus/Z017/system.prop
