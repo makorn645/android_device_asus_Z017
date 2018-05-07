@@ -1,9 +1,9 @@
 [
   {
     "remote": "github",
-    "repository": "shakalaca/android_kernel_asus_ze520kl",
-    "revision": "twrp",
-    "target_path": "kernel/asus/Z017"
+    "repository": "makorn645/android_kernel_asus_msm8953",
+    "revision": "o8.1",
+    "target_path": "kernel/asus/msm8953"
   },
   {
     "remote": "github",
