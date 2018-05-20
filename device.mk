@@ -379,7 +379,9 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.target.rc \
     init.asus.usb.rc \
+    init.bt.sh \
     init.chargerled.sh \
+    init.modem.sh \
     init.qcom.post_boot.sh \
     sp
 
