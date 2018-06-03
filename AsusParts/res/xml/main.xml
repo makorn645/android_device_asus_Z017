@@ -47,6 +47,13 @@
             android:icon="@null"
             android:paddingLeft="0dp"
             android:persistent="false" />
+        <SwitchPreference
+            android:key="keypad_mode"
+            android:title="@string/disable_keys_title"
+            android:summary="@string/disable_keys_summary"
+            android:icon="@null"
+            android:paddingLeft="0dp"
+            android:persistent="false" />
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -248,6 +248,7 @@ on boot
     
     # Permissions for Keypad Mode
     chown system system /sys/bus/i2c/devices/i2c-3/3-0038/keypad_mode
+    chmod 0660 /sys/bus/i2c/devices/i2c-3/3-0038/keypad_mode
 
     # Permissions for ProximityCheck
     chown system system /sys/devices/soc/78b7000.i2c/i2c-3/3-0038/Enable_Proximity_Check
