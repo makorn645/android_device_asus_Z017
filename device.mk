@@ -156,6 +156,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     bspcapability \
+    Snap \
     libbson
 
 PRODUCT_PACKAGES += \
@@ -402,6 +403,10 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
+
+# Sound Recorder
+PRODUCT_PACKAGES += \
+    SoundRecorder
 
 # Whitelisted app
 PRODUCT_COPY_FILES += \
