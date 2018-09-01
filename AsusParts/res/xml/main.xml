@@ -20,7 +20,6 @@
             android:key="vib_strength"
             android:title="@string/vib_strength_title_head"
             android:summary="@string/vib_strength_summary_head"
-            android:icon="@drawable/ic_vibrate" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -29,7 +28,6 @@
             android:key="kcal"
             android:fragment="org.omnirom.device.DisplayCalibration"
             android:summary="@string/kcal_summary"
-            android:icon="@drawable/ic_kcal"
             android:title="@string/kcal_title" />
     </PreferenceCategory>
 
@@ -39,21 +37,18 @@
             android:key="glove_mode"
             android:title="@string/glove_mode_title"
             android:summary="@string/glove_mode_summary"
-            android:icon="@drawable/ic_glove_mode"
             android:paddingLeft="0dp"
             android:persistent="false" />
         <SwitchPreference
             android:key="prox_wake"
             android:title="@string/prox_wake_title"
             android:summary="@string/prox_wake_summary"
-            android:icon="@drawable/ic_proximity_check"
             android:paddingLeft="0dp"
             android:persistent="false" />
         <SwitchPreference
             android:key="swipe2wake"
             android:title="@string/swipe2wake_title"
             android:summary="@string/swipe2wake_summary"
-            android:icon="@drawable/ic_swipe2wake"
             android:paddingLeft="0dp"
             android:persistent="false" />
 
