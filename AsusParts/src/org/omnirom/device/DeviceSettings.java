@@ -21,7 +21,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
@@ -61,16 +60,6 @@ public class DeviceSettings extends PreferenceFragment implements
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.main, rootKey);
-
-        PreferenceScreen mKcalPref = (PreferenceScreen) findPreference("kcal");
-        mKcalPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-             @Override
-             public boolean onPreferenceClick(Preference preference) {
-                 Intent intent = new Intent(getActivity().getApplicationContext(), DisplayCalibration.class);
-                 startActivity(intent);
-                 return true;
-             }
-        });
 
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         if (mVibratorStrength != null) {
