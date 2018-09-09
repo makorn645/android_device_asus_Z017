@@ -454,7 +454,6 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    libshim_ims \
     ims-ext-common
 
 PRODUCT_COPY_FILES += \
