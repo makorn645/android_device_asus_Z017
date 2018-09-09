@@ -422,8 +422,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libwcnss_qmi  \
     wcnss_service \
-    ipacm \
-    IPACM_cfg.xml \
     libcld80211 \
     libqsap_sdk \
     libQWiFiSoftApCfg \
@@ -458,6 +456,11 @@ PRODUCT_PACKAGES += \
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_zenfone3
+
+# ipacm
+# PRODUCT_PACKAGES += \
+#    ipacm \
+#    IPACM_cfg.xml
 
 # IMS
 PRODUCT_PACKAGES += \
