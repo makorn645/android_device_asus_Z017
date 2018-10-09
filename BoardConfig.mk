@@ -189,8 +189,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 57583582208 # 56233967 * 1024 mmcblk0p67
 TARGET_USES_MKE2FS := true
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/dsp:/dsp \
-    /vendor/firmware_mnt:/firmware \
-    /mnt/vendor/persist:/persist
+    /vendor/firmware_mnt:/firmware
 BOARD_ROOT_EXTRA_FOLDERS += \
     asusfw \
     asdf \
