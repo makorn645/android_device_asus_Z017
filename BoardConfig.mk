@@ -186,15 +186,16 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432    #    32768 * 1024 mmcblk0p59
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4026531840    #  3932160 * 1024 mmcblk0p66
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 57583582208 # 56233967 * 1024 mmcblk0p67
 TARGET_USES_MKE2FS := true
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /vendor/dsp:/dsp \
+    /vendor/firmware_mnt:/firmware \
+    /mnt/vendor/persist:/persist
 BOARD_ROOT_EXTRA_FOLDERS += \
     asusfw \
     asdf \
     ADF \
     APD \
-    dsp \
     factory \
-    firmware \
-    persist \
     persdata \
     persdata/absolute
 
