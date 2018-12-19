@@ -476,7 +476,6 @@ vendor/bin/ATFWD-daemon|9778a62bb94f9eeb49190908bb9b74060acd4fa6
 vendor/bin/netmgrd|748b87d905aa6727e812694de559e54b958f3832
 vendor/bin/qti|a67280f22725799c47d78e07570d9e173e6624f1
 vendor/bin/rmt_storage|5b821f0aa673febf158892a6c8ec97a35817f876
-vendor/bin/tftp_server|121601c941fb17ee6a5d91fc9ee3e47da6bb03d1
 vendor/etc/data/dsi_config.xml|c85722f90588edd3288b953b0ab97c81edeabfa9
 vendor/etc/data/netmgr_config.xml|d99ed385820913bcc8612ad76cb6b5d25ec54981
 vendor/lib/libconfigdb.so|e22cb9981de3c8916d7aaf16bde355df67b605a5
@@ -513,6 +512,11 @@ vendor/lib64/vendor.qti.hardware.radio.uim@1.0_vendor.so|80935638b9c21e437734a5a
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_client@1.0_vendor.so|d304628434f8d185169abbdec694f1ddf09b9e83
 vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so|e9bcbdf6544c5334a1f2e461d733d5766cd1b129
 vendor/radio/qcril_database/qcril.db|8405d20c8e1184c79eba1c4f19ecfb92d7529bdf
+
+# Radio - from daisy - PKQ1.180917.001
+vendor/bin/tftp_server|05a9c0e0e691e534e703bded4a99083d25a26ebb
+vendor/lib64/libqrtr.so|83676274fde1056a0507b4100a3a5423f5af5021
+vendor/lib64/libqsocket.so|3799e723be152c31c270f93a64e2865c0d9e86c4
 
 # Radio - IMS - from Mido
 -priv-app/ims/ims.apk|54464ad55ece9aa27bedca09f5af0ca49f17620b
