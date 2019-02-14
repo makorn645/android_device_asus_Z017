@@ -51,9 +51,7 @@ lib64/libtruescanner.so
 lib64/libts_detected_face_jni.so
 lib64/libts_face_beautify_hal.so
 lib64/libts_face_beautify_jni.so
-vendor/bin/mm-qcamera-app
 vendor/bin/mm-qcamera-daemon
-vendor/lib/hw/camera.msm8953.so
 vendor/lib/libasuscameraext_jni.so
 vendor/lib/libasuscameraext_jpeg_hw_encoder.so
 vendor/lib/libcamera_defocus.so
@@ -68,7 +66,6 @@ vendor/lib/libjpegehw.so
 vendor/lib/libjpeggifcodec.so
 vendor/lib/libjpegHWCompress.so
 vendor/lib/libmm-color-convertor.so
-vendor/lib/libmm-qcamera.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
 vendor/lib/libmmcamera2_dcrf.so
@@ -149,8 +146,8 @@ vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libremosaic_daemon.so
 vendor/lib/libseemore.so
 vendor/lib/libSonyIMX298PdafLibrary.so
-vendor/lib/libts_detected_face_hal.so
-vendor/lib/libts_face_beautify_hal.so
+-vendor/lib/libts_detected_face_hal.so
+-vendor/lib/libts_face_beautify_hal.so
 vendor/lib/libubifocus.so
 vendor/lib64/libmmcamera2_frame_algorithm.so
 vendor/lib64/libmmcamera2_is.so
