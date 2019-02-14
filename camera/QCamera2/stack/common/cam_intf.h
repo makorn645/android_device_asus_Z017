@@ -613,7 +613,7 @@ typedef struct {
 } cam_stream_img_prop_t;
 
 typedef struct {
-    uint8_t enableStream; /*0 – stop and 1-start */
+    uint8_t enableStream; /*0 ï¿½ stop and 1-start */
 } cam_request_frames;
 
 typedef struct {
@@ -969,7 +969,7 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_ADV_CAPTURE_MODE,             uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_QUADRA_CFA,                   int32_t,                     1);
     INCLUDE(CAM_INTF_META_RAW,                          cam_dimension_t,             1);
-    INCLUDE(CAM_INTF_META_STREAM_INFO_FOR_PIC_RES,      cam_stream_size_info_t,      1);
+    INCLUDE(CAM_INTF_META_STREAM_INFO_FOR_PIC_RES,      asus_cam_stream_size_info_t, 1);
 
 
     /* HAL3 specific */
@@ -1024,8 +1024,25 @@ typedef struct {
     INCLUDE(CAM_INTF_META_REPROCESS_FLAGS,              uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_JPEG_ENCODE_CROP,             cam_stream_crop_info_t,      1);
     INCLUDE(CAM_INTF_PARM_JPEG_SCALE_DIMENSION,         cam_dimension_t,             1);
+    INCLUDE(ASUS_RESERVED_PARAM_1,                      uint32_t,                    1);
     INCLUDE(CAM_INTF_META_FOCUS_DEPTH_INFO,             uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_HAL_BRACKETING_HDR,           cam_hdr_param_t,             1);
+    INCLUDE(ASUS_RESERVED_PARAM_2,                      uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_3,                      uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_4,                      uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_5,                      uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_6,                      uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_7,                      uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_8,                      uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_9,                      uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_10,                     uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_11,                     uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_12,                     uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_13,                     uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_14,                     uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_15,                     uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_16,                     uint32_t,                    1);
+    INCLUDE(ASUS_RESERVED_PARAM_17,                     uint32_t,                    1);
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to

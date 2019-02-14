@@ -1057,6 +1057,7 @@ typedef struct {
     cam_rect_t roi[MAX_ROI];
     int32_t weight[MAX_ROI];
     uint8_t is_multiwindow;
+    volatile char asus_char2[164];
 } cam_roi_info_t;
 
 typedef enum {
@@ -1527,6 +1528,7 @@ typedef struct {
     int32_t est_snap_iso_value;
     uint32_t est_snap_luma;
     uint32_t est_snap_target;
+    volatile char asus_char1[44];
 } cam_3a_params_t;
 
 typedef struct {
@@ -1670,6 +1672,7 @@ typedef struct {
     uint32_t dt[MAX_NUM_STREAMS];
     uint32_t vc[MAX_NUM_STREAMS];
     cam_sub_format_type_t sub_format_type[MAX_NUM_STREAMS];
+    volatile char asus_char3[16];
 } cam_stream_size_info_t;
 
 typedef enum {
@@ -2220,13 +2223,32 @@ typedef enum {
     CAM_INTF_PARM_JPEG_ENCODE_CROP,
     /* Param of scaling information for JPEG encoder */
     CAM_INTF_PARM_JPEG_SCALE_DIMENSION,
+    /* For asus blobs compatibility */
+    ASUS_RESERVED_PARAM_7, // 225
+    ASUS_RESERVED_PARAM_8,
+    /* TODO : Proper positioning of params */
+    ASUS_RESERVED_PARAM_1,
+    ASUS_RESERVED_PARAM_2,
     /*Param for updating Quadra CFA mode */
-    CAM_INTF_PARM_QUADRA_CFA,
+    CAM_INTF_PARM_QUADRA_CFA, // 229
+    ASUS_RESERVED_PARAM_3,
+    ASUS_RESERVED_PARAM_4,
     /* Meta Raw Dim */
-    CAM_INTF_META_RAW,
+    CAM_INTF_META_RAW, // 232
+    ASUS_RESERVED_PARAM_5,
+    ASUS_RESERVED_PARAM_6,
+    ASUS_RESERVED_PARAM_9,
+    ASUS_RESERVED_PARAM_10,
+    ASUS_RESERVED_PARAM_11,
     /* Number of streams and size of streams in
        current configuration for pic res*/
-    CAM_INTF_META_STREAM_INFO_FOR_PIC_RES,
+    CAM_INTF_META_STREAM_INFO_FOR_PIC_RES, // 238
+    ASUS_RESERVED_PARAM_12,
+    ASUS_RESERVED_PARAM_13,
+    ASUS_RESERVED_PARAM_14,
+    ASUS_RESERVED_PARAM_15,
+    ASUS_RESERVED_PARAM_16,
+    ASUS_RESERVED_PARAM_17,
     CAM_INTF_META_FOCUS_DEPTH_INFO,
     /*Focus value output from af core*/
     CAM_INTF_META_FOCUS_VALUE,
