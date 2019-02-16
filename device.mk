@@ -152,7 +152,8 @@ PRODUCT_PACKAGES += \
     Snap \
     libbson \
     camera.msm8953 \
-    libmm-qcamera
+    libmm-qcamera \
+    get_offsets
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
