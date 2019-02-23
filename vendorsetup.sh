@@ -1,2 +1,2 @@
-add_lunch_combo omni_zenfone3-userdebug
-add_lunch_combo omni_zenfone3-eng
+add_lunch_combo lineage_zenfone3-userdebug
+add_lunch_combo lineage_zenfone3-eng

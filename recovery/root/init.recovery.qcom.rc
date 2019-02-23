@@ -1,17 +1,24 @@
-import init.recovery.qcom_decrypt.rc
-
 on init
-    insmod /sbin/texfat.ko
+    chmod 0660 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
 
-    start copy_fingerprint
+    setprop ro.board.platform msm8953
 
 on fs
-    wait /dev/block/platform/soc/7824900.sdhci
-    symlink /dev/block/platform/soc/7824900.sdhci /dev/block/bootdevice
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
     wait /dev/block/bootdevice/by-name/factory
     mkdir /factory 0755
     mount ext4 /dev/block/bootdevice/by-name/factory /factory ro nodev nosuid
 
-service copy_fingerprint /sbin/copy_fingerprint.sh
-    oneshot
+service sbinqseecomd /sbin/qseecomd
+    user root
+    group root
     disabled
+    seclabel u:r:recovery:s0
+
+on property:ro.crypto.state=encrypted
+    start sbinqseecomd

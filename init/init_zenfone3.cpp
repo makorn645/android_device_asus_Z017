@@ -31,15 +31,32 @@
 #include <sys/_system_properties.h>
 #include <sys/stat.h>
 
-#include <android-base/logging.h>
+#include <android-base/file.h>
 #include <android-base/properties.h>
+#include "vendor_init.h"
 #include "property_service.h"
 
 #include <fcntl.h>
 #include <unistd.h>
 
-namespace android {
-namespace init {
+#define SIMCODE_FILE "/factory/SIMCODE"
+#define SSN_FILE "/factory/SSN"
+
+char const *product;
+char const *description;
+char const *fingerprint;
+char const *device;
+char const *model;
+char const *power_profile;
+char const *carrier;
+char const *hwID;
+char const *csc;
+char const *dpi;
+
+using android::base::GetProperty;
+using android::base::ReadFileToString;
+
+using android::init::property_set;
 
 void property_override(char const prop[], char const value[])
 {
@@ -52,56 +69,71 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
+
 static void set_serial()
 {
-    int fd, rc;
-    char buf[16];
-    int status = 1;
-    const char *path = "/factory/SSN";
+    std::string ssnValue;
 
-    fd = open(path, O_RDONLY);
-    if (fd < 0) {
-        status = -1;
-    }
-
-    if (rc = read(fd, buf, 15) < 0) {
-        status = -1;
+    if (ReadFileToString(SSN_FILE, &ssnValue)) {
+        property_override("ro.serialno", ssnValue.c_str());
     } else {
-        buf[15] = '\0';
-        property_override("ro.serialno", buf);
-    }
-    close(fd);
-
-    if (status < 0) {
         property_override("ro.serialno", "UNKNOWNSERIALNO");
+    }
+}
+
+void check_varient()
+{
+    std::string project = GetProperty("ro.boot.id.prj", "");
+    int rf = stoi(GetProperty("ro.boot.id.rf", ""));
+    if (project == "6") {
+        switch(rf){
+            case 0: model = "ASUS_Z017D"; break; /* Global Varient */
+            case 1: model = "ASUS_Z017DB"; break; /* Indonesian Varient */
+            case 2: model = "ASUS_Z017DC"; break; /* Latin American Varient */
+            default: model = "ASUS_Z017DA"; break; /* Default to Z017DA */
+        }
+
+        product = "ZE520KL";
+        fingerprint = "asus/WW_Phone/ASUS_Z017D_1:8.0.0/OPR1.170623.026/15.0410.1804.61-0:user/release-keys";
+        description = "WW_Phone-user 8.0.0 OPR1.170623.026 15.0410.1804.61-0 release-keys";
+        device = "ASUS_Z017D_1";
+        hwID = "ZE520KL_MP";
+        csc = "WW_ZE520KL-15.0410.1804.61-0";
+    } else {
+        switch(rf){
+            case 0: model = "ASUS_Z012S";  break; /* Canadian varient */
+            case 1: model = "ASUS_Z012DB"; break; /* Indonesian Varient */
+            case 2: model = "ASUS_Z012DC"; break; /* Latin American variant */
+            case 8: model = "ASUS_Z012DA";  break; /* JP/TW variant */
+            case 15: model = "ASUS_Z012DE"; break; /* Chinese Varient */
+            default: model = "ASUS_Z012DA"; break; /* Default to Z012DA */
+        }
+
+        product = "ZE552KL";
+        fingerprint = "asus/WW_Phone/ASUS_Z012D:8.0.0/OPR1.170623.026/15.0410.1804.60-0:user/release-keys";
+        description = "WW_Phone-user 8.0.0 OPR1.170623.026 15.0410.1804.60-0 release-keys";
+        device = "ASUS_Z012D";
+        hwID = "ZE552KL_MP";
+        csc = "WW_ZE552KL-15.0410.1804.60-0";
     }
 }
 
 void vendor_load_properties()
 {
     set_serial();
+    check_varient();
 
-    int project = stoi(android::base::GetProperty("ro.boot.id.prj", ""));
-    property_set("ro.product.name", "WW_Phone");
-    if (project == 6) {
-        property_override("ro.build.product", "ZE520KL");
-        property_override("ro.build.description", "WW_Phone-user 8.0.0 OPR1.170623.026 15.0410.1712.31-0 release-keys");
-        property_override("ro.build.fingerprint", "asus/WW_Phone/ASUS_Z017D:8.0.0/OPR1.170623.026/15.0410.1712.31-0:user/release-keys");
-        property_override("ro.product.device", "ASUS_Z017D_1");
-        property_override("ro.product.model", "ASUS_Z017D");
-        property_set("ro.product.carrier", "US-ASUS_Z017D-WW_Phone");
-        property_set("ro.hardware.id", "ZE520KL_MP");
-        property_set("ro.build.csc.version", "WW_ZE520KL-15.0410.1712.31-0");
-    } else if (project == 7) {
-        property_override("ro.build.product", "ZE552KL");
-        property_override("ro.build.description", "WW_Phone-user 8.0.0 OPR1.170623.026 15.0410.1712.31-0 release-keys");
-        property_override("ro.build.fingerprint", "asus/WW_Phone/ASUS_Z012D:8.0.0/OPR1.170623.026/15.0410.1712.31-0:user/release-keys");
-        property_override("ro.product.device", "ASUS_Z012D");
-        property_override("ro.product.model", "ASUS_Z012D");
-        property_set("ro.product.carrier", "US-ASUS_Z012D-WW_Phone");
-        property_set("ro.hardware.id", "ZE552KL_MP");
-        property_set("ro.build.csc.version", "WW_ZE552KL-15.0410.1712.31-0");
-    }
-}
-}
+    property_override_dual("ro.product.name", "ro.vendor.product.name", "WW_Phone");
+    property_override("ro.build.product", product);
+    property_override("ro.build.description", description);
+    property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", fingerprint);
+    property_override_dual("ro.product.device", "ro.vendor.product.device", device);
+    property_override_dual("ro.product.model", "ro.vendor.product.model", model);
+    property_set("ro.hardware.id", hwID);
+    property_set("ro.build.csc.version", csc);
 }
