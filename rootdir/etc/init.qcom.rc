@@ -77,6 +77,11 @@ on early-boot
     chmod 0664 /sys/class/graphics/fb0/mode
     chmod 0664 /sys/class/graphics/fb0/msm_cmd_autorefresh_en
 
+service loggy /vendor/bin/loggy.sh
+   class core
+   user root
+   oneshot
+
 on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
