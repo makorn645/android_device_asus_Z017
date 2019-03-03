@@ -226,10 +226,6 @@ on post-fs-data
     mkdir /data/dit_file 0771 camera camera
     mkdir /dev/socket/dit 0777 cameraserver audio
 
- # ASUS_BSP +++ srhuang "Gsensor after SMMI"
-    chmod 0700 /persist/sensors/sns.reg
-# ASUS_BSP --- srhuang "Gsensor after SMMI"
-
 #ASUS_BSP Lucien +++: Change for jpegHWCompress
     chmod 0666 /dev/jpeg0
     chmod 0666 /dev/video1
