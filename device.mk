@@ -247,7 +247,7 @@ PRODUCT_PACKAGES += \
     libcurl \
     libgnss \
     libgnsspps \
-    libshim_gnss
+    libsensorndkbridge \
 
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl-qti \
