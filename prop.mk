@@ -117,9 +117,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.qfp=false \
-    persist.asus.fp.wakeup_support=true \
-    persist.asus.fp.wakeup=true
+    persist.qfp=false
 
 # FM
 PRODUCT_PROPERTY_OVERRIDES += \

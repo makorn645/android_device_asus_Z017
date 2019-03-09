@@ -11,16 +11,15 @@ on fs
     chmod 0760 /dev/goodix_fp
 
 on post-fs
-
     # Vibrator
     chown system system /sys/class/timed_output/vibrator/vmax_level
     chown system system /sys/class/timed_output/vibrator/vtg_level
     chown system system /sys/class/timed_output/vibrator/vtg_default
     chown system system /sys/class/timed_output/vibrator/vtg_max
     chown system system /sys/class/timed_output/vibrator/vtg_min
-    
-    start fpseek
 
+    start vendor.fpinit
+    
 on post-fs-data
 # ASUS_BSP+++ RTC
     mkdir /data/vendor/time 0700 system system
@@ -263,41 +262,35 @@ on property:sys.boot_completed=1
 on property:sys.thermal_engine.reset=1
     start AThermalService
 
-#ASUS_BSP+++: add for fingerprint
-service gx_fpd /vendor/bin/gx_fpd
-    class late_start
-    group system
-    user system
-    oneshot
-    disabled
-
-service gx_fpd_gxfp3 /vendor/bin/gx_fpd_gxfp3
-    class late_start
-    group system
-    user system
-    oneshot
-    disabled
-
-service fpseek /vendor/bin/fpseek
+service vendor.fpinit /vendor/bin/fpinit
     class core
-    user root
+    user system
+    group system 
+    oneshot
+    disabled
+
+service vendor.gx_fpd /vendor/bin/gx_fpd
+    class late_start
+    user system
     group system drmrpc
     oneshot
     disabled
-    seclabel u:r:fpservice:s0
 
-service fpservice /vendor/bin/sh /vendor/etc/fpservice.sh
+service vendor.gx_fpd_gxfp3 /vendor/bin/gx_fpd_gxfp3
     class late_start
-    user root
-    group root system drmrpc
+    user system
+    group system drmrpc
     oneshot
     disabled
-    seclabel u:r:fpservice:s0
-    
-on property:sys.boot_completed=1
-    start fpservice
 
-#ASUS_BSP---: add for fingerprint
+on property:ro.hardware.fingerprint=gxfpa
+    start vendor.gx_fpd
+
+on property:ro.hardware.fingerprint=gxfp3
+    start vendor.gx_fpd_gxfp3
+
+on property:ro.hardware.fingerprint=gxfp5
+    start vendor.gx_fpd_gxfp3
 
 service AThermalService /vendor/bin/sh /vendor/etc/init.asus.thermal_conf.sh
     class core

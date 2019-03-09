@@ -310,7 +310,7 @@ vendor/lib64/libfp_client.so
 vendor/lib64/libfpnav.so
 vendor/lib64/libfpservice.so
 vendor/bin/gx_fpd
-vendor/bin/fpseek
+vendor/bin/fpinit
 vendor/bin/gx_fpd_gxfp3
 vendor/etc/firmware/fpseekta.b00
 vendor/etc/firmware/fpseekta.b01

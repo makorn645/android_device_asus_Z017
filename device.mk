@@ -234,7 +234,6 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fpservice.sh:$(TARGET_COPY_OUT_VENDOR)/etc/fpservice.sh \
     $(LOCAL_PATH)/rootdir/etc/loggy.sh:$(TARGET_COPY_OUT_VENDOR)/bin/loggy.sh
 
 # Gatekeeper HAL
