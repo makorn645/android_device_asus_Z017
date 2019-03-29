@@ -14,6 +14,9 @@ on fs
     mkdir /factory 0755
     mount ext4 /dev/block/bootdevice/by-name/factory /factory ro nodev nosuid
 
+    # Fix OTA
+    restorecon /cache/recovery
+
 service sbinqseecomd /sbin/qseecomd
     user root
     group root
